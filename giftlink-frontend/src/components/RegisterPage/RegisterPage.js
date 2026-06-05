@@ -10,10 +10,27 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
 
   // register handler
-  const handleRegister = () => {
-    console.log("Register clicked");
-    console.log({ firstName, lastName, email, password });
-  };
+  const handleRegister = async () => {
+  const response = await fetch("http://localhost:3060/api/auth/register", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+        name: `${firstName} ${lastName}`,
+        email,
+        password
+        })
+  });
+
+    const data = await response.json();
+    console.log(data);
+
+    if (data.authtoken) {
+        sessionStorage.setItem("token", data.authtoken);
+        window.location.href = "/app";
+      }
+    };
 
   return (
     <div className="container mt-5">

@@ -6,10 +6,27 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    console.log("Login clicked");
-    console.log({ email, password });
-  };
+  const handleLogin = async () => {
+  const response = await fetch("http://localhost:3060/api/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": ""
+    },
+    body: JSON.stringify({
+      email,
+      password
+    })
+  });
+
+  const data = await response.json();
+  console.log(data);
+
+  if (data.authtoken) {
+    sessionStorage.setItem("token", data.authtoken);
+    window.location.href = "/app";
+  }
+};
 
   return (
     <div className="container mt-5">

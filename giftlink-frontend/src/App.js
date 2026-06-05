@@ -1,21 +1,40 @@
-import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import MainPage from './components/MainPage/MainPage';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import Navbar from './components/Navbar/Navbar';
+import React from "react";
+import "./App.css";
 
 function App() {
-
   return (
-    <>
-        <Navbar/>
-        <Routes>
-          {/* the final code will not pass the products to every page, but each page will call the server API */}
-          <Route path="/" element={<MainPage />} />
-          <Route path="/app" element={<MainPage />} />
-        </Routes>
-        </>
+    <div className="App">
+
+      {/* Navbar */}
+      <header className="navbar">
+        <h1>GiftLink</h1>
+        <nav>
+        <a href="/">Home</a>
+        <a href="/gifts">Gifts</a>
+        <a href="/search">Search</a>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="hero">
+        <h2>Find the Perfect Gift</h2>
+        <p>Discover meaningful gifts for every occasion</p>
+        <button>Get Started</button>
+      </section>
+
+      {/* Features */}
+      <section className="features">
+        <div className="card">Easy Search</div>
+        <div className="card">Smart Suggestions</div>
+        <div className="card">Personalized Gifts</div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>© 2026 GiftLink</p>
+      </footer>
+
+    </div>
   );
 }
 

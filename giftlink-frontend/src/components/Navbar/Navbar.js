@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Navbar() {
-    return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="/">GiftLink</a>
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <h1>GiftLink</h1>
 
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    {/* Task 1: Add links to Home and Gifts below*/}
-                </ul>
-            </div>
-        </nav>
-    );
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="/main">Gifts</Link>
+      </div>
+    </nav>
+  );
 }
+
+export default Navbar;
